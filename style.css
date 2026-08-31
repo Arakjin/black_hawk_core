@@ -1,169 +1,155 @@
-/*
-Theme Name: Black Hawk Core
-Theme URI: https://blackhawksolutions.fi
-Author: Black Hawk Solutions
-Author URI: https://blackhawksolutions.fi
-Description: A custom WordPress theme based on bootstrap framework.
-Version: 1.0
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: black_hawk_solutions
-*/
-
-@charset "UTF-8";
-
-:root {
-  --default-link-color: #FF6a00;
-  --section-text-color: #FFFFFF;
-  --section-bg-color: 0,0,0;
-  --section-bg-opacity: 1;
-  --default-link-color-rgb: 255, 106, 0;
-  --default-hover-color: #be4f00;
-  --default-active-color: #FF6a00;
-  --default-disabled-color: #973f00;
-  
-  --default-link-border-color: #FF6a00;
-  --default-hover-border-color: #be4f00;
-  --default-active-border-color: #FF6a00;
-  --default-disabled-border-color: #753100;
-
-  --masthead-overlay-gradient: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 100%);
-  --navbar-logo-filter: none;
-  --navbar-shrink-logo-filter: none;
-
-  --bs-navbar-emphasis-color-rgb: #ffffff;
-  --bs-navbar-shrink-emphasis-color-rgb: #ffffff;
-}
-
-.btn-primary {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: var(--default-link-color);
-  --bs-btn-border-color: var(--default-link-border-color);
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: var(--default-hover-color);
-  --bs-btn-hover-border-color: var(--default-hover-border-color);
-  --bs-btn-focus-shadow-rgb: 49,132,253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: var(--default-active-color);
-  --bs-btn-active-border-color: var(--default-active-border-color);
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: var(--default-disabled-color);
-  --bs-btn-disabled-border-color: var(--default-disabled-border-color);
-}
-
-a {
-  color: rgba(var(--default-link-color-rgb),var(--bs-link-opacity,1));
-}
-
-.masthead {
-  position: relative; /* Ensure the masthead is positioned relative for positioning the pseudo-element */
-  height: var(--header-height);
-}
-
-.masthead::before {
-  content: ''; /* Necessary for the pseudo-element to appear */
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--masthead-overlay-gradient);
-  z-index: 1; /* Position the gradient above the background image but below the content */
-  pointer-events: none; /* Ensures the gradient does not interfere with user interactions */
-}
-
-.masthead-overlay {
-  position: absolute;
-  /*top: 15%;
-  left: 15%;
-  transform: translate(-50%, -50%); */ /* Centers the overlay horizontally and vertically */
-  z-index: 10; /* Ensures the overlay is above the carousel */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  color: var(--masthead-text-color);; /* Makes text visible if overlaying images */
-}
-
-.masthead-small-overlay {
-  position: absolute;
-  /*top: 35%;
-  left: 15%;
-  transform: translate(-50%, -50%); *//* Centers the overlay horizontally and vertically */
-  z-index: 10; /* Ensures the overlay is above the carousel */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  color: var(--masthead-text-color); /* Makes text visible if overlaying images */
-}
-
-.masthead .masthead-logo {
-  width: var(--hero-logo-size) !important;
-}
-
-/* Dynamic size for masthead heading and subheading */
-.masthead .masthead-heading {
-  font-size: var(--hero-heading-font-size) !important;
-  margin-bottom: var(--hero-padding);
-  padding-bottom: 0px;
-  color: var(--header-text-color);
-  text-shadow: var(--header-shadow);
-}
-
-.masthead .masthead-subheading {
-  font-size: var(--hero-subheading-font-size) !important;
-  margin-top: var(--hero-padding);
-  padding-top: 0px;  
-  color: var(--header-text-color);
-  text-shadow: var(--header-shadow);
-}
-/* Shrinking for Smaller Screens */
-@media (max-width: 576px) {
-  .masthead .masthead-logo {
-      width: calc(var(--hero-logo-size) * var(--navbar-shrink-ratio) / 100) !important;
-  }
-
-  .masthead .masthead-heading {
-      font-size: calc(var(--hero-heading-font-size) * var(--navbar-shrink-ratio) / 100) !important;
-  }
-
-  .masthead .masthead-subheading {
-      font-size: calc(var(--hero-subheading-font-size) * var(--navbar-shrink-ratio) / 100) !important;
-  }
-}
+/*
+Theme Name: Black Hawk Core
+Theme URI: https://blackhawksolutions.fi
+Author: Black Hawk Solutions
+Author URI: https://blackhawksolutions.fi
+Description: A custom WordPress theme based on bootstrap framework.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: black_hawk_solutions
+*/
+@charset "UTF-8";
+:root {
+  --default-link-color: #FF6a00;
+  --section-text-color: #FFFFFF;
+  --section-bg-color: 0,0,0;
+  --section-bg-opacity: 1;
+  --default-link-color-rgb: 255, 106, 0;
+  --default-hover-color: #be4f00;
+  --default-active-color: #FF6a00;
+  --default-disabled-color: #973f00;
+  
+  --default-link-border-color: #FF6a00;
+  --default-hover-border-color: #be4f00;
+  --default-active-border-color: #FF6a00;
+  --default-disabled-border-color: #753100;
+  --masthead-overlay-gradient: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 100%);
+  --navbar-logo-filter: none;
+  --navbar-shrink-logo-filter: none;
+  --bs-navbar-emphasis-color-rgb: #ffffff;
+  --bs-navbar-shrink-emphasis-color-rgb: #ffffff;
+}
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--default-link-color);
+  --bs-btn-border-color: var(--default-link-border-color);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--default-hover-color);
+  --bs-btn-hover-border-color: var(--default-hover-border-color);
+  --bs-btn-focus-shadow-rgb: 49,132,253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--default-active-color);
+  --bs-btn-active-border-color: var(--default-active-border-color);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--default-disabled-color);
+  --bs-btn-disabled-border-color: var(--default-disabled-border-color);
+}
+a {
+  color: rgba(var(--default-link-color-rgb),var(--bs-link-opacity,1));
+}
+.masthead {
+  position: relative; /* Ensure the masthead is positioned relative for positioning the pseudo-element */
+  height: var(--header-height);
+}
+.masthead::before {
+  content: ''; /* Necessary for the pseudo-element to appear */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--masthead-overlay-gradient);
+  z-index: 1; /* Position the gradient above the background image but below the content */
+  pointer-events: none; /* Ensures the gradient does not interfere with user interactions */
+}
+.masthead-overlay {
+  position: absolute;
+  /*top: 15%;
+  left: 15%;
+  transform: translate(-50%, -50%); */ /* Centers the overlay horizontally and vertically */
+  z-index: 10; /* Ensures the overlay is above the carousel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: var(--masthead-text-color);; /* Makes text visible if overlaying images */
+}
+.masthead-small-overlay {
+  position: absolute;
+  /*top: 35%;
+  left: 15%;
+  transform: translate(-50%, -50%); *//* Centers the overlay horizontally and vertically */
+  z-index: 10; /* Ensures the overlay is above the carousel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: var(--masthead-text-color); /* Makes text visible if overlaying images */
+}
+.masthead .masthead-logo {
+  width: var(--hero-logo-size) !important;
+}
+/* Dynamic size for masthead heading and subheading */
+.masthead .masthead-heading {
+  font-size: var(--hero-heading-font-size) !important;
+  margin-bottom: var(--hero-padding);
+  padding-bottom: 0px;
+  color: var(--header-text-color);
+  text-shadow: var(--header-shadow);
+}
+.masthead .masthead-subheading {
+  font-size: var(--hero-subheading-font-size) !important;
+  margin-top: var(--hero-padding);
+  padding-top: 0px;  
+  color: var(--header-text-color);
+  text-shadow: var(--header-shadow);
+}
+/* Shrinking for Smaller Screens */
+@media (max-width: 576px) {
+  .masthead .masthead-logo {
+      width: calc(var(--hero-logo-size) * var(--navbar-shrink-ratio) / 100) !important;
+  }
+  .masthead .masthead-heading {
+      font-size: calc(var(--hero-heading-font-size) * var(--navbar-shrink-ratio) / 100) !important;
+  }
+  .masthead .masthead-subheading {
+      font-size: calc(var(--hero-subheading-font-size) * var(--navbar-shrink-ratio) / 100) !important;
+  }
+}
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
   color: var(--bs-navbar-active-color) !important;
 }
-
 @media (max-width: 767.98px) {
   #mainNav {
     max-width: 100%;
     width: 100%;
     box-sizing: border-box;
     overflow-x: hidden;
+    position: relative;
+    padding-right: 4.5rem !important;
   }
-
   #mainNav .navbar-brand {
     flex: 1 1 0;
     justify-content: flex-start !important;
     min-width: 0;
+    max-width: 100%;
     margin-right: 0.5rem;
+    overflow: hidden;
+    white-space: normal;
   }
-
   #mainNav .navbar-brand > .d-flex {
     min-width: 0;
+    max-width: 100%;
   }
-
   #mainNav .navbar-logo {
     flex: 0 0 auto;
     max-width: 40vw;
     height: auto;
   }
-
   #mainNav .navbar-heading,
   #mainNav .navbar-subheading {
     display: block;
@@ -171,491 +157,427 @@ a {
     line-height: 1;
     overflow-wrap: anywhere;
   }
-
   #mainNav .navbar-toggler {
-    flex: 0 0 auto;
-    margin-left: auto;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    z-index: 2;
   }
-
   #mainNav .navbar-collapse {
     flex-basis: 100%;
     min-width: 0;
   }
 }
-
 /* Default Navbar Logo and Text Sizes */
 .navbar-logo {
   width: var(--navbar-logo-size) !important;
   filter: var(--navbar-logo-filter);
   transition: width 0.3s;
-}
-
-.navbar-heading {
-  font-size: var(--navbar-heading-font-size) !important;
-  padding-bottom: 0px;
-  margin-bottom: var(--navbar-padding);
-  transition: font-size 0.3s;
-}
-
-.navbar-subheading {
-  font-size: var(--navbar-subheading-font-size) !important;
-  padding-top: 0px;
-  margin-top: var(--navbar-padding);
-  transition: font-size 0.3s;
-}
-
-/* Shrinking Navbar Logo and Text for Navbar Shrink State */
-.navbar-shrink .navbar-logo {
-  width: calc(var(--navbar-logo-size) * var(--navbar-shrink-ratio) / 100) !important;
-  filter: var(--navbar-shrink-logo-filter) !important;
-}
-
-.navbar-shrink .navbar-heading {
-  font-size: calc(var(--navbar-heading-font-size) * var(--navbar-shrink-ratio) / 100) !important;
-}
-
-.navbar-shrink .navbar-subheading {
-  font-size: calc(var(--navbar-subheading-font-size) * var(--navbar-shrink-ratio) / 100) !important;
-}
-
-/* Additional Shrinking for Small Screens (Bootstrap's Small Threshold) */
-@media (max-width: 576px) {
-  .navbar-logo {
-    width: calc(var(--navbar-logo-size) * var(--navbar-shrink-ratio) / 100) !important;
-  }
-.navbar-heading {
-    font-size: calc(var(--navbar-heading-font-size) * var(--navbar-shrink-ratio) / 100) !important;
-}
-.navbar-subheading {
-    font-size: calc(var(--navbar-subheading-font-size) * var(--navbar-shrink-ratio) / 100) !important;
-}
-  .navbar-shrink .navbar-logo {
-    width: calc(
-      var(--navbar-logo-size) * var(--navbar-shrink-ratio) / 100 * 50 / 100
-    ) !important; /* Applies both shrink ratio and 50% */
-  }
-
-  .navbar-shrink .navbar-heading {
-    font-size: calc(
-      var(--navbar-heading-font-size) * var(--navbar-shrink-ratio) / 100 * 50 / 100
-    ) !important;
-  }
-
-  .navbar-shrink .navbar-subheading {
-    font-size: calc(
-      var(--navbar-subheading-font-size) * var(--navbar-shrink-ratio) / 100 * 50 / 100
-    ) !important;
-  }
-}
-
-.carousel-item {  
-  object-fit: cover;
-  object-position: center;
-  height: var(--header-height);
-  overflow: hidden;
-}
-
-.carousel-item img{  
-  object-fit: cover;
-  object-position: center;
-  height: var(--header-height);
-  overflow: hidden;
-}
-section {
-  padding-top: 4em;
-  padding-bottom: 4em;
-  color: var(--section-text-color);
-}
-
-.darkening-gradient {
-  position: relative;
-  overflow: hidden;
-}
-
-.darkening-gradient::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 100%);
-  z-index: 1;
-  pointer-events: none;
-}
-
-.sticky-post {
-  padding: 5px 10px;
-  border-radius: 3px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  display: inline-block;
-  border: solid var(--default-link-color) 2px;
-  box-shadow: 5px 5px 5px var(--default-link-color);
-}
-
-/* Align the entire widget area to the right */
-#shop-topbar.widget-area {
-  display: flex;
-  justify-content: flex-end; /* This pushes the widgets to the right */
-  align-items: center; /* Vertically centers the widgets */
-}
-
-/* Optional: Add space between multiple widgets */
-#shop-topbar.widget-area .widget {
-  margin-left: 15px; /* Adjust this value to change the space between widgets */
-}
-
-/* Ensure widgets in the shop sidebar are stacked vertically */
-#main-sidebar.widget-area {
-  display: flex;
-  flex-direction: column; /* Stack widgets vertically */
-}
-
-/* Ensure the widgets take full width in the shop sidebar */
-#main-sidebar .widget {
-  width: 100%; /* Full width for each widget */
-  margin-bottom: 1rem; /* Space between widgets */
-}
-
-/* Make images within the shop widgets fluid */
-#main-sidebar .widget img {
-  max-width: 100%;
-  height: auto; /* Responsive images */
-  display: block;
-}
-
-/* Ensure widgets in the shop sidebar are stacked vertically */
-#shop-sidebar.widget-area {
-  display: flex;
-  flex-direction: column; /* Stack widgets vertically */
-}
-
-/* Ensure the widgets take full width in the shop sidebar */
-#shop-sidebar .widget {
-  width: 100%; /* Full width for each widget */
-  margin-bottom: 1rem; /* Space between widgets */
-}
-
-/* Make images within the shop widgets fluid */
-#shop-sidebar .widget img {
-  max-width: 100%;
-  height: auto; /* Responsive images */
-  display: block;
-}
-
-/* Woocommerce */
-
-/* Primary Buttons */
-.woocommerce a.button, 
-.woocommerce button.button, 
-.woocommerce input.button, 
-.woocommerce #respond input#submit, 
-.woocommerce #content input.button, 
-.woocommerce-page a.button, 
-.woocommerce-page button.button, 
-.woocommerce-page input.button, 
-.woocommerce-page #respond input#submit {
-    background-color: var(--default-link-color); /* Button background color */
-    color: var(--bs-btn-color); /* Button text color */
-    border: none; /* Optional: Remove border */
-}
-
-.woocommerce a.button:hover, 
-.woocommerce button.button:hover, 
-.woocommerce input.button:hover, 
-.woocommerce #respond input#submit:hover, 
-.woocommerce #content input.button:hover, 
-.woocommerce-page a.button:hover, 
-.woocommerce-page button.button:hover, 
-.woocommerce-page input.button:hover, 
-.woocommerce-page #respond input#submit:hover {
-    background-color: var(--default-hover-color); /* Hover background color */
-    color: var(--bs-btn-color); /* Hover text color */
-}
-
-/* Change background and text color for "alt" buttons */
-.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit.alt, 
-.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button.alt, 
-.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt, 
-.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button.alt, 
-:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit.alt, 
-:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt, 
-:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button.alt, 
-:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button.alt {
-    background-color: var(--default-active-color); /* Background color */
-    color: var(--bs-btn-color); /* Text color */
-    border-color: var(--default-active-color); /* Border color (if applicable) */
-}
-
-/* Change hover background and text color for "alt" buttons */
-.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit.alt:hover, 
-.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button.alt:hover, 
-.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt:hover, 
-.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button.alt:hover, 
-:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit.alt:hover, 
-:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt:hover, 
-:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button.alt:hover, 
-:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button.alt:hover {
-    background-color: var(--default-hover-color); /* Hover background color */
-    color: var(--bs-btn-color); /* Hover text color */
-    border-color: var(--default-hover-color); /* Hover border color (if applicable) */
-}
-
-.wc-block-checkout__terms.wc-block-checkout__terms--with-separator {
-  border-top: 1px solid hsla(0,0%,100%,.11) !important;
-  padding-top: 2em !important;
-}
-
-.black_hawk-wc-checkout-terms {
-	border-top: 1px solid hsla(0, 0%, 100%, 0.11) !important;
-	padding-top: 2em !important;
-}
-
-.page-section {
-  background-color: rgba(var(--section-bg-color),var(--section-bg-opacity,1));
-}
-
-.navbar-fixed {
-  position: fixed;
-  z-index: 20;
-  left:0px;
-  right: 0px;
-}
-
-#mainNav.navbar-shrink {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-#mainNav.navbar-shrink .navbar-brand {
-  font-size: 1.5em;
-}
-
-.spacer {
-  width: 100%;
-  background: rgba(var(--section-bg-color),var(--section-bg-opacity,1));
-}
-
-.navbar {
-  background: var(--bs-navbar-bg-rgb);
-  transition: background 0.3s ease, color 0.3s ease;
-  
-  --bs-navbar-color: rgba(var(--bs-navbar-emphasis-color-rgb), 0.65) !important;
-  --bs-navbar-hover-color: rgba(var(--bs-navbar-emphasis-color-rgb), 0.8) !important;
-  --bs-navbar-disabled-color: rgba(var(--bs-navbar-emphasis-color-rgb), 0.3) !important;
-  --bs-navbar-active-color: rgba(var(--bs-navbar-emphasis-color-rgb), 1) !important;
-  --bs-navbar-brand-color: rgba(var(--bs-navbar-emphasis-color-rgb), 1) !important;
-  --bs-navbar-brand-hover-color: rgba(var(--bs-navbar-emphasis-color-rgb), 1) !important;
-  --bs-navbar-toggler-border-color: rgba(var(--bs-navbar-emphasis-color-rgb), 0.15) !important;
-}
-
-.navbar-shrink {
-  background: var(--bs-navbar-shrink-bg-rgb) !important;
-  transition: background 0.3s ease, color 0.3s ease;
-    
-  --bs-navbar-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 0.65) !important;
-  --bs-navbar-hover-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 0.8) !important;
-  --bs-navbar-disabled-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 0.3) !important;
-  --bs-navbar-active-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 1) !important;
-  --bs-navbar-brand-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 1) !important;
-  --bs-navbar-brand-hover-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 1) !important;
-  --bs-navbar-toggler-border-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 0.15) !important;
-}
-
-/* Custom Latest Posts Block Styles */
-.hide-post-titles .wp-block-latest-posts__post-title {
-  display: none;
-}
-
-.wp-block-latest-posts__post-title {
-	font-family: var(--heading-font-family, Georgia, serif);
-	font-size: var(--category-heading-font-size, 1em);
-}
-
-.wp-block-latest-posts__list {
-  list-style: none; /* Remove bullets from the list */
-  margin: 0;
-  padding: 0;
-}
-
-.wp-block-latest-posts__list > li {
-  margin-bottom: 1rem; /* Optional: add some spacing between list items */
-}
-
-.wp-block-latest-posts__post-full-content p {
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
-
-.card {
-  --bs-card-spacer-y: 1rem;
-  --bs-card-spacer-x: 1rem;
-  --bs-card-title-spacer-y: 0.5rem;
-  --bs-card-border-width: 0.125rem;
-  --bs-card-border-color: var(--bs-border-color-translucent);
-  --bs-card-border-radius: 0.5rem;
-  --bs-card-box-shadow: ;
-  --bs-card-inner-border-radius: 0.375rem;
-  --bs-card-cap-padding-y: 0.5rem;
-  --bs-card-cap-padding-x: 1rem;
-  --bs-card-cap-bg: rgba(0, 0, 0, 0.03);
-  --bs-card-cap-color: ;
-  --bs-card-height: 100%; /* Ensures cards are the same height */
-  --bs-card-color: ;
-  --bs-card-bg: #fff;
-  --bs-card-img-overlay-padding: 1rem;
-  --bs-card-group-margin: 0.75rem;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  height: 100%; /* Set all cards to equal height */
-  word-wrap: break-word;
-  background-color: var(--bs-card-bg);
-  background-clip: border-box;
-  border: var(--bs-card-border-width) solid var(--bs-card-border-color);
-  border-radius: var(--bs-card-border-radius);
-}
-
-.card > hr {
-  margin-right: 0;
-  margin-left: 0;
-}
-
-.card > .list-group {
-  border-top: inherit;
-  border-bottom: inherit;
-}
-
-.card > .list-group:first-child {
-  border-top-width: 0;
-  border-top-left-radius: var(--bs-card-inner-border-radius);
-  border-top-right-radius: var(--bs-card-inner-border-radius);
-}
-
-.card > .list-group:last-child {
-  border-bottom-width: 0;
-  border-bottom-right-radius: var(--bs-card-inner-border-radius);
-  border-bottom-left-radius: var(--bs-card-inner-border-radius);
-}
-
-.card > .card-header + .list-group,
-.card > .list-group + .card-footer {
-  border-top: 0;
-}
-
-.card-body {
-  flex: 1 1 auto;
-  padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
-  color: var(--bs-card-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Ensures consistent spacing inside the card */
-}
-
-.card-title {
-  margin-bottom: var(--bs-card-title-spacer-y);
-}
-
-.card-subtitle {
-  margin-top: calc(-0.5 * var(--bs-card-title-spacer-y));
-  margin-bottom: 0;
-}
-
-.card-text {
-  flex-grow: 1; /* Allows text to fill available space */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom: 0; /* Prevents text overflow */
-}
-
-.card-link + .card-link {
-  margin-left: var(--bs-card-spacer-x);
-}
-
-.card-header {
-  padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
-  margin-bottom: 0;
-  color: var(--bs-card-cap-color);
-  background-color: var(--bs-card-cap-bg);
-  border-bottom: var(--bs-card-border-width) solid var(--bs-card-border-color);
-}
-
-.card-header:first-child {
-  border-radius: var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0 0;
-}
-
-.card-footer {
-  padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
-  color: var(--bs-card-cap-color);
-  background-color: var(--bs-card-cap-bg);
-  border-top: var(--bs-card-border-width) solid var(--bs-card-border-color);
-  flex-shrink: 0; /* Prevents the footer from shrinking */
-}
-
-.card-footer:last-child {
-  border-radius: 0 0 var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius);
-}
-
-.card-header-tabs {
-  margin-right: calc(-0.5 * var(--bs-card-cap-padding-x));
-  margin-bottom: calc(-1 * var(--bs-card-cap-padding-y));
-  margin-left: calc(-0.5 * var(--bs-card-cap-padding-x));
-  border-bottom: 0;
-}
-
-.card-header-tabs .nav-link.active {
-  background-color: var(--bs-card-bg);
-  border-bottom-color: var(--bs-card-bg);
-}
-
-.card-header-pills {
-  margin-right: calc(-0.5 * var(--bs-card-cap-padding-x));
-  margin-left: calc(-0.5 * var(--bs-card-cap-padding-x));
-}
-
-.card-img-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: var(--bs-card-img-overlay-padding);
-  border-radius: var(--bs-card-inner-border-radius);
-}
-
-.card-img,
-.card-img-top,
-.card-img-bottom {
-  width: 100%;
-  object-fit: cover; /* Ensures images fill their container without stretching */
-}
-
-.card-img-container {
-  position: relative;
-  width: 100%;
-  padding-top: 75%; /* 4:3 aspect ratio */
-  overflow: hidden; /* Ensures the image stays within the container */
-}
-
-.card-img-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Makes the image cover the container without distortion */
-  border-top-left-radius: var(--bs-card-inner-border-radius);
-  border-top-right-radius: var(--bs-card-inner-border-radius);
-}
-
-.card-img,
-.card-img-bottom {
-  border-bottom-right-radius: var(--bs-card-inner-border-radius);
-  border-bottom-left-radius: var(--bs-card-inner-border-radius);
-}
-
-.card-group > .card {
-  margin-bottom: var(--bs-card-group-margin);
+}
+.navbar-heading {
+  font-size: var(--navbar-heading-font-size) !important;
+  padding-bottom: 0px;
+  margin-bottom: var(--navbar-padding);
+  transition: font-size 0.3s;
+}
+.navbar-subheading {
+  font-size: var(--navbar-subheading-font-size) !important;
+  padding-top: 0px;
+  margin-top: var(--navbar-padding);
+  transition: font-size 0.3s;
+}
+/* Shrinking Navbar Logo and Text for Navbar Shrink State */
+.navbar-shrink .navbar-logo {
+  width: calc(var(--navbar-logo-size) * var(--navbar-shrink-ratio) / 100) !important;
+  filter: var(--navbar-shrink-logo-filter) !important;
+}
+.navbar-shrink .navbar-heading {
+  font-size: calc(var(--navbar-heading-font-size) * var(--navbar-shrink-ratio) / 100) !important;
+}
+.navbar-shrink .navbar-subheading {
+  font-size: calc(var(--navbar-subheading-font-size) * var(--navbar-shrink-ratio) / 100) !important;
+}
+/* Additional Shrinking for Small Screens (Bootstrap's Small Threshold) */
+@media (max-width: 576px) {
+  .navbar-logo {
+    width: calc(var(--navbar-logo-size) * var(--navbar-shrink-ratio) / 100) !important;
+  }
+.navbar-heading {
+    font-size: calc(var(--navbar-heading-font-size) * var(--navbar-shrink-ratio) / 100) !important;
+}
+.navbar-subheading {
+    font-size: calc(var(--navbar-subheading-font-size) * var(--navbar-shrink-ratio) / 100) !important;
+}
+  .navbar-shrink .navbar-logo {
+    width: calc(
+      var(--navbar-logo-size) * var(--navbar-shrink-ratio) / 100 * 50 / 100
+    ) !important; /* Applies both shrink ratio and 50% */
+  }
+  .navbar-shrink .navbar-heading {
+    font-size: calc(
+      var(--navbar-heading-font-size) * var(--navbar-shrink-ratio) / 100 * 50 / 100
+    ) !important;
+  }
+  .navbar-shrink .navbar-subheading {
+    font-size: calc(
+      var(--navbar-subheading-font-size) * var(--navbar-shrink-ratio) / 100 * 50 / 100
+    ) !important;
+  }
+}
+.carousel-item {  
+  object-fit: cover;
+  object-position: center;
+  height: var(--header-height);
+  overflow: hidden;
+}
+.carousel-item img{  
+  object-fit: cover;
+  object-position: center;
+  height: var(--header-height);
+  overflow: hidden;
+}
+section {
+  padding-top: 4em;
+  padding-bottom: 4em;
+  color: var(--section-text-color);
+}
+.darkening-gradient {
+  position: relative;
+  overflow: hidden;
+}
+.darkening-gradient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.sticky-post {
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: inline-block;
+  border: solid var(--default-link-color) 2px;
+  box-shadow: 5px 5px 5px var(--default-link-color);
+}
+/* Align the entire widget area to the right */
+#shop-topbar.widget-area {
+  display: flex;
+  justify-content: flex-end; /* This pushes the widgets to the right */
+  align-items: center; /* Vertically centers the widgets */
+}
+/* Optional: Add space between multiple widgets */
+#shop-topbar.widget-area .widget {
+  margin-left: 15px; /* Adjust this value to change the space between widgets */
+}
+/* Ensure widgets in the shop sidebar are stacked vertically */
+#main-sidebar.widget-area {
+  display: flex;
+  flex-direction: column; /* Stack widgets vertically */
+}
+/* Ensure the widgets take full width in the shop sidebar */
+#main-sidebar .widget {
+  width: 100%; /* Full width for each widget */
+  margin-bottom: 1rem; /* Space between widgets */
+}
+/* Make images within the shop widgets fluid */
+#main-sidebar .widget img {
+  max-width: 100%;
+  height: auto; /* Responsive images */
+  display: block;
+}
+/* Ensure widgets in the shop sidebar are stacked vertically */
+#shop-sidebar.widget-area {
+  display: flex;
+  flex-direction: column; /* Stack widgets vertically */
+}
+/* Ensure the widgets take full width in the shop sidebar */
+#shop-sidebar .widget {
+  width: 100%; /* Full width for each widget */
+  margin-bottom: 1rem; /* Space between widgets */
+}
+/* Make images within the shop widgets fluid */
+#shop-sidebar .widget img {
+  max-width: 100%;
+  height: auto; /* Responsive images */
+  display: block;
+}
+/* Woocommerce */
+/* Primary Buttons */
+.woocommerce a.button, 
+.woocommerce button.button, 
+.woocommerce input.button, 
+.woocommerce #respond input#submit, 
+.woocommerce #content input.button, 
+.woocommerce-page a.button, 
+.woocommerce-page button.button, 
+.woocommerce-page input.button, 
+.woocommerce-page #respond input#submit {
+    background-color: var(--default-link-color); /* Button background color */
+    color: var(--bs-btn-color); /* Button text color */
+    border: none; /* Optional: Remove border */
+}
+.woocommerce a.button:hover, 
+.woocommerce button.button:hover, 
+.woocommerce input.button:hover, 
+.woocommerce #respond input#submit:hover, 
+.woocommerce #content input.button:hover, 
+.woocommerce-page a.button:hover, 
+.woocommerce-page button.button:hover, 
+.woocommerce-page input.button:hover, 
+.woocommerce-page #respond input#submit:hover {
+    background-color: var(--default-hover-color); /* Hover background color */
+    color: var(--bs-btn-color); /* Hover text color */
+}
+/* Change background and text color for "alt" buttons */
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit.alt, 
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button.alt, 
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt, 
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button.alt, 
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit.alt, 
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt, 
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button.alt, 
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button.alt {
+    background-color: var(--default-active-color); /* Background color */
+    color: var(--bs-btn-color); /* Text color */
+    border-color: var(--default-active-color); /* Border color (if applicable) */
+}
+/* Change hover background and text color for "alt" buttons */
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit.alt:hover, 
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button.alt:hover, 
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt:hover, 
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button.alt:hover, 
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit.alt:hover, 
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt:hover, 
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button.alt:hover, 
+:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button.alt:hover {
+    background-color: var(--default-hover-color); /* Hover background color */
+    color: var(--bs-btn-color); /* Hover text color */
+    border-color: var(--default-hover-color); /* Hover border color (if applicable) */
+}
+.wc-block-checkout__terms.wc-block-checkout__terms--with-separator {
+  border-top: 1px solid hsla(0,0%,100%,.11) !important;
+  padding-top: 2em !important;
+}
+.black_hawk-wc-checkout-terms {
+	border-top: 1px solid hsla(0, 0%, 100%, 0.11) !important;
+	padding-top: 2em !important;
+}
+.page-section {
+  background-color: rgba(var(--section-bg-color),var(--section-bg-opacity,1));
+}
+.navbar-fixed {
+  position: fixed;
+  z-index: 20;
+  left:0px;
+  right: 0px;
+}
+#mainNav.navbar-shrink {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+#mainNav.navbar-shrink .navbar-brand {
+  font-size: 1.5em;
+}
+.spacer {
+  width: 100%;
+  background: rgba(var(--section-bg-color),var(--section-bg-opacity,1));
+}
+.navbar {
+  background: var(--bs-navbar-bg-rgb);
+  transition: background 0.3s ease, color 0.3s ease;
+  
+  --bs-navbar-color: rgba(var(--bs-navbar-emphasis-color-rgb), 0.65) !important;
+  --bs-navbar-hover-color: rgba(var(--bs-navbar-emphasis-color-rgb), 0.8) !important;
+  --bs-navbar-disabled-color: rgba(var(--bs-navbar-emphasis-color-rgb), 0.3) !important;
+  --bs-navbar-active-color: rgba(var(--bs-navbar-emphasis-color-rgb), 1) !important;
+  --bs-navbar-brand-color: rgba(var(--bs-navbar-emphasis-color-rgb), 1) !important;
+  --bs-navbar-brand-hover-color: rgba(var(--bs-navbar-emphasis-color-rgb), 1) !important;
+  --bs-navbar-toggler-border-color: rgba(var(--bs-navbar-emphasis-color-rgb), 0.15) !important;
+}
+.navbar-shrink {
+  background: var(--bs-navbar-shrink-bg-rgb) !important;
+  transition: background 0.3s ease, color 0.3s ease;
+    
+  --bs-navbar-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 0.65) !important;
+  --bs-navbar-hover-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 0.8) !important;
+  --bs-navbar-disabled-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 0.3) !important;
+  --bs-navbar-active-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 1) !important;
+  --bs-navbar-brand-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 1) !important;
+  --bs-navbar-brand-hover-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 1) !important;
+  --bs-navbar-toggler-border-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 0.15) !important;
+}
+/* Custom Latest Posts Block Styles */
+.hide-post-titles .wp-block-latest-posts__post-title {
+  display: none;
+}
+.wp-block-latest-posts__post-title {
+	font-family: var(--heading-font-family, Georgia, serif);
+	font-size: var(--category-heading-font-size, 1em);
+}
+.wp-block-latest-posts__list {
+  list-style: none; /* Remove bullets from the list */
+  margin: 0;
+  padding: 0;
+}
+.wp-block-latest-posts__list > li {
+  margin-bottom: 1rem; /* Optional: add some spacing between list items */
+}
+.wp-block-latest-posts__post-full-content p {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.card {
+  --bs-card-spacer-y: 1rem;
+  --bs-card-spacer-x: 1rem;
+  --bs-card-title-spacer-y: 0.5rem;
+  --bs-card-border-width: 0.125rem;
+  --bs-card-border-color: var(--bs-border-color-translucent);
+  --bs-card-border-radius: 0.5rem;
+  --bs-card-box-shadow: ;
+  --bs-card-inner-border-radius: 0.375rem;
+  --bs-card-cap-padding-y: 0.5rem;
+  --bs-card-cap-padding-x: 1rem;
+  --bs-card-cap-bg: rgba(0, 0, 0, 0.03);
+  --bs-card-cap-color: ;
+  --bs-card-height: 100%; /* Ensures cards are the same height */
+  --bs-card-color: ;
+  --bs-card-bg: #fff;
+  --bs-card-img-overlay-padding: 1rem;
+  --bs-card-group-margin: 0.75rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%; /* Set all cards to equal height */
+  word-wrap: break-word;
+  background-color: var(--bs-card-bg);
+  background-clip: border-box;
+  border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+  border-radius: var(--bs-card-border-radius);
+}
+.card > hr {
+  margin-right: 0;
+  margin-left: 0;
+}
+.card > .list-group {
+  border-top: inherit;
+  border-bottom: inherit;
+}
+.card > .list-group:first-child {
+  border-top-width: 0;
+  border-top-left-radius: var(--bs-card-inner-border-radius);
+  border-top-right-radius: var(--bs-card-inner-border-radius);
+}
+.card > .list-group:last-child {
+  border-bottom-width: 0;
+  border-bottom-right-radius: var(--bs-card-inner-border-radius);
+  border-bottom-left-radius: var(--bs-card-inner-border-radius);
+}
+.card > .card-header + .list-group,
+.card > .list-group + .card-footer {
+  border-top: 0;
+}
+.card-body {
+  flex: 1 1 auto;
+  padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+  color: var(--bs-card-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures consistent spacing inside the card */
+}
+.card-title {
+  margin-bottom: var(--bs-card-title-spacer-y);
+}
+.card-subtitle {
+  margin-top: calc(-0.5 * var(--bs-card-title-spacer-y));
+  margin-bottom: 0;
+}
+.card-text {
+  flex-grow: 1; /* Allows text to fill available space */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0; /* Prevents text overflow */
+}
+.card-link + .card-link {
+  margin-left: var(--bs-card-spacer-x);
+}
+.card-header {
+  padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
+  margin-bottom: 0;
+  color: var(--bs-card-cap-color);
+  background-color: var(--bs-card-cap-bg);
+  border-bottom: var(--bs-card-border-width) solid var(--bs-card-border-color);
+}
+.card-header:first-child {
+  border-radius: var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0 0;
+}
+.card-footer {
+  padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
+  color: var(--bs-card-cap-color);
+  background-color: var(--bs-card-cap-bg);
+  border-top: var(--bs-card-border-width) solid var(--bs-card-border-color);
+  flex-shrink: 0; /* Prevents the footer from shrinking */
+}
+.card-footer:last-child {
+  border-radius: 0 0 var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius);
+}
+.card-header-tabs {
+  margin-right: calc(-0.5 * var(--bs-card-cap-padding-x));
+  margin-bottom: calc(-1 * var(--bs-card-cap-padding-y));
+  margin-left: calc(-0.5 * var(--bs-card-cap-padding-x));
+  border-bottom: 0;
+}
+.card-header-tabs .nav-link.active {
+  background-color: var(--bs-card-bg);
+  border-bottom-color: var(--bs-card-bg);
+}
+.card-header-pills {
+  margin-right: calc(-0.5 * var(--bs-card-cap-padding-x));
+  margin-left: calc(-0.5 * var(--bs-card-cap-padding-x));
+}
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: var(--bs-card-img-overlay-padding);
+  border-radius: var(--bs-card-inner-border-radius);
+}
+.card-img,
+.card-img-top,
+.card-img-bottom {
+  width: 100%;
+  object-fit: cover; /* Ensures images fill their container without stretching */
+}
+.card-img-container {
+  position: relative;
+  width: 100%;
+  padding-top: 75%; /* 4:3 aspect ratio */
+  overflow: hidden; /* Ensures the image stays within the container */
+}
+.card-img-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Makes the image cover the container without distortion */
+  border-top-left-radius: var(--bs-card-inner-border-radius);
+  border-top-right-radius: var(--bs-card-inner-border-radius);
+}
+.card-img,
+.card-img-bottom {
+  border-bottom-right-radius: var(--bs-card-inner-border-radius);
+  border-bottom-left-radius: var(--bs-card-inner-border-radius);
+}
+.card-group > .card {
+  margin-bottom: var(--bs-card-group-margin);
 }
