@@ -1,0 +1,50 @@
+.ps-3 {
+    padding-left: 3px;
+}
+
+.pe-3 {
+    padding-right: 3px;
+}
+.ms-5 {
+  margin-left: 5px;
+}
+
+.me-5 {
+  margin-right: 5px;
+}
+
+.old-photo-shape {    
+    position: relative;
+    clip-path: url(#oldPaperClipPath);
+  }
+
+.old-photo-shadow {
+    filter: drop-shadow(2px 2px 2px black); 
+  }
+  
+  .old-photo {
+    position: relative;
+    filter: grayscale(1) blur(1px) contrast(1.2) sepia(1) blur(0.25px) ;
+  }
+  
+  .old-photo::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-mask: radial-gradient(farthest-side, #0000 30%, #000);
+    mask: radial-gradient(farthest-side, #0000 30%, #000);
+    backdrop-filter: blur(5px) sepia(90%);   
+  
+  }
+  
+  .old-photo::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><filter id='noise' x='0%' y='0%' width='100%' height='100%'><feTurbulence baseFrequency='0.5' /></filter><rect x='0' y='0' width='100%' height='100%' filter='url(%23noise)' /></svg>"), #f003;
+    filter: grayscale(100%) contrast(150%) ;
+    mix-blend-mode: darken;
+  }
