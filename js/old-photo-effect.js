@@ -73,6 +73,18 @@
                 return 'align-items-md-center';
         }
     }
+
+    function getVerticalAlignStyle(verticalAlign) {
+        switch (verticalAlign) {
+            case 'top':
+                return 'flex-start';
+            case 'bottom':
+                return 'flex-end';
+            case 'center':
+            default:
+                return 'center';
+        }
+    }
     
     blocks.registerBlockType('my-plugin/wh-custom-image-block', {
         title: 'Old Photo Effect',
@@ -175,21 +187,38 @@
                 var mediaOrderClass = getMediaOrderClass(attributes.layoutOrientation);
                 var textOrderClass = getTextOrderClass(attributes.layoutOrientation);
                 var alignmentClass = getVerticalAlignClass(attributes.verticalAlign);
+                var mediaOrder = attributes.layoutOrientation === 'image-right' ? 2 : 1;
+                var textOrder = attributes.layoutOrientation === 'image-right' ? 1 : 2;
+                var editorColumnStyle = {
+                    flex: '0 0 50%',
+                    width: '50%',
+                    maxWidth: '50%',
+                    minWidth: 0
+                };
 
                 blockContent = el('div', useBlockProps({ 
                     className: `wp-block-my-plugin-media-text ${attributes.layoutOrientation}`
                 }),
                     el('div', { 
                         className: `wp-block-my-plugin-media-text__content row g-3 ${alignmentClass}`,
-                        style: { width: '100%' }
+                        style: {
+                            width: '100%',
+                            display: 'flex',
+                            flexDirection: 'row',
+                            flexWrap: 'nowrap',
+                            alignItems: getVerticalAlignStyle(attributes.verticalAlign)
+                        }
                     },
-                        el('div', { className: `wp-block-my-plugin-media-text__media old-photo-shadow col-12 col-md-6 order-1 ${mediaOrderClass}` },
+                        el('div', {
+                            className: `wp-block-my-plugin-media-text__media old-photo-shadow col-12 col-md-6 order-1 ${mediaOrderClass}`,
+                            style: Object.assign({}, editorColumnStyle, { order: mediaOrder })
+                        },
                             el('img', { src: attributes.imageURL, alt: attributes.alt, className: imageClasses, style: imageStyles })
                         ),
                         el('div', {
                             className: `media-text-content col-12 col-md-6 order-2 ${textOrderClass}`,
                             onKeyDown: stopTextDeleteFromRemovingBlock,
-                            style: { height:'100%' }
+                            style: Object.assign({}, editorColumnStyle, { height:'100%', order: textOrder })
                         },
                             el(RichText, {
                                 tagName: 'p',
