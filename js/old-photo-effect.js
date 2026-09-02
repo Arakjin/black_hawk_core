@@ -25,6 +25,12 @@
         return sanitized;
     }
 
+    function stopTextDeleteFromRemovingBlock(event) {
+        if (event.key === 'Backspace' || event.key === 'Delete') {
+            event.stopPropagation();
+        }
+    }
+
     function createHiddenSvg() {
         return el('svg', {
             width: "0px",
@@ -37,6 +43,26 @@
                 el('path', { d: "M 0 0.1 L 0.005 0.25 L 0.035 0.253 L 0.005 0.255 L 0 0.507 L 0 0.55 L 0.086 0.555 L 0 0.558 L 0.007 0.768 L 0 0.919 L 0 0.984 Q 0 1 0.019 1 L 0.321 0.996 L 0.492 1 L 0.653 0.995 L 0.972 1 Q 1 1 1 0.982 L 0.994 0.793 L 0.983 0.791 L 0.994 0.79 L 1 0.56 L 0.9 0.555 L 1 0.55 L 0.997 0.366 L 0.992 0.23 L 1 0.111 L 1 0.02 Q 1 0 0.976 0 L 0.819 0.003 L 0.566 0 L 0.361 0.007 L 0.03 0 Q 0 0 0 0.019 Z" })
             )
         ));
+    }
+
+    function getMediaOrderClass(layoutOrientation) {
+        return layoutOrientation === 'image-right' ? 'order-md-2' : 'order-md-1';
+    }
+
+    function getTextOrderClass(layoutOrientation) {
+        return layoutOrientation === 'image-right' ? 'order-md-1' : 'order-md-2';
+    }
+
+    function getVerticalAlignClass(verticalAlign) {
+        switch (verticalAlign) {
+            case 'top':
+                return 'align-items-md-start';
+            case 'bottom':
+                return 'align-items-md-end';
+            case 'center':
+            default:
+                return 'align-items-md-center';
+        }
     }
     
     blocks.registerBlockType('my-plugin/wh-custom-image-block', {
@@ -71,7 +97,7 @@
             text: {
                 type: 'string',
                 source: 'html',
-                selector: '.media-text-content',
+                selector: '.wp-block-my-plugin-media-text__text',
                 default: '',
             },
             rotation: {
@@ -99,7 +125,6 @@
         edit: function(props) {
             var attributes = props.attributes;
             var setAttributes = props.setAttributes;
-            var flexDirection = attributes.layoutOrientation === 'image-right' ? 'row-reverse' : 'row';
 
             var hiddenSvg = createHiddenSvg();
 
@@ -138,42 +163,31 @@
                         })
                 );
             } else {
-                // Correcting the flexDirection setup
-                var flexDirection = attributes.layoutOrientation === 'image-right' ? 'row-reverse' : 'row';
-                            
-                var alignItems;
-                switch (attributes.verticalAlign) {
-                    case 'top':
-                        alignItems = 'flex-start';
-                        break;
-                    case 'center':
-                        alignItems = 'center';
-                        break;
-                    case 'bottom':
-                        alignItems = 'flex-end';
-                        break;
-                    default:
-                        alignItems = 'center'; // Default to center if undefined or invalid value
-                }
+                var mediaOrderClass = getMediaOrderClass(attributes.layoutOrientation);
+                var textOrderClass = getTextOrderClass(attributes.layoutOrientation);
+                var alignmentClass = getVerticalAlignClass(attributes.verticalAlign);
 
                 blockContent = el('div', useBlockProps({ 
                     className: `wp-block-my-plugin-media-text ${attributes.layoutOrientation}`
                 }),
                     el('div', { 
-                        className: 'wp-block-my-plugin-media-text__content', 
-                        style: { display: 'flex', flexDirection: flexDirection, alignItems: alignItems, width: '100%' } // Apply dynamic alignItems here
+                        className: `wp-block-my-plugin-media-text__content row g-3 ${alignmentClass}`,
+                        style: { width: '100%' }
                     },
-                        el('div', { className: 'ms-5 me-5 wp-block-my-plugin-media-text__media old-photo-shadow', style: { maxWidth: '50%' } },
+                        el('div', { className: `wp-block-my-plugin-media-text__media old-photo-shadow col-12 col-md-6 order-1 ${mediaOrderClass}` },
                             el('img', { src: attributes.imageURL, alt: attributes.alt, className: imageClasses, style: imageStyles })
                         ),
-                        el('div', { className: 'ms-5 me-5 media-text-content', style: {maxWidth: '50%', height:'100%'} }, // Adjust className and style as needed
+                        el('div', { className: `media-text-content col-12 col-md-6 order-2 ${textOrderClass}`, style: { height:'100%' } },
                             el(RichText, {
+                                tagName: 'p',
                                 className: 'wp-block-my-plugin-media-text__text',
                                 value: attributes.text,
                                 onChange: function(newText) {
                                     setAttributes({ text: newText });
                                 },
+                                onKeyDown: stopTextDeleteFromRemovingBlock,
                                 placeholder: 'Enter your text here...',
+                                preservePlaceholderOnFocus: true,
                                 style: { textAlign: attributes.textAlign } // Keep your existing textAlign style
                             })
                         )
@@ -336,35 +350,21 @@
                     )
                 );
             } else {
-                var flexDirection = attributes.layoutOrientation === 'image-right' ? 'row-reverse' : 'row';
-                // Map verticalAlign attribute to valid CSS values for alignItems
-                var alignItems;
-                switch (attributes.verticalAlign) {
-                    case 'top':
-                        alignItems = 'flex-start';
-                        break;
-                    case 'center':
-                        alignItems = 'center';
-                        break;
-                    case 'bottom':
-                        alignItems = 'flex-end';
-                        break;
-                    default:
-                        alignItems = 'center'; // Fallback to center
-                }
+                var mediaOrderClass = getMediaOrderClass(attributes.layoutOrientation);
+                var textOrderClass = getTextOrderClass(attributes.layoutOrientation);
+                var alignmentClass = getVerticalAlignClass(attributes.verticalAlign);
 
-                // Then use these mapped values in your saved content
                 return el(element.Fragment, {},
                     createHiddenSvg(),
                     el('div', useBlockProps.save({ className: `wp-block-my-plugin-media-text ${attributes.layoutOrientation}` }),
                         el('div', {
-                            className: 'wp-block-my-plugin-media-text__content',
-                            style: { display: 'flex', flexDirection: flexDirection, alignItems: alignItems, width: '100%' }
+                            className: `wp-block-my-plugin-media-text__content row g-3 ${alignmentClass}`,
+                            style: { width: '100%' }
                         },
-                            el('figure', { className: `ps-3 pe-3 wp-block-image old-photo-shadow photo-rotated ${attributes.size}`, style: { maxWidth: '50%' } },
+                            el('figure', { className: `wp-block-image old-photo-shadow photo-rotated ${attributes.size} col-12 col-md-6 order-1 ${mediaOrderClass}` },
                                 el('img', { src: attributes.imageURL, alt: attributes.alt, className: imageClasses, style: imageStyles })
                             ),
-                            el('div', { className: 'ps-3 pe-3 media-text-content', style: {maxWidth: '50%', height:'100%'} },
+                            el('div', { className: `media-text-content col-12 col-md-6 order-2 ${textOrderClass}`, style: { height:'100%' } },
                                 el(RichText.Content, {
                                     tagName: 'p', // Specifies that the content should be wrapped with a <p> tag
                                     className: 'wp-block-my-plugin-media-text__text',
