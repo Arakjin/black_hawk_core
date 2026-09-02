@@ -190,9 +190,9 @@
                 var mediaOrder = attributes.layoutOrientation === 'image-right' ? 2 : 1;
                 var textOrder = attributes.layoutOrientation === 'image-right' ? 1 : 2;
                 var editorColumnStyle = {
-                    flex: '0 0 50%',
-                    width: '50%',
-                    maxWidth: '50%',
+                    flex: '0 0 calc(50% - 0.75rem)',
+                    width: 'calc(50% - 0.75rem)',
+                    maxWidth: 'calc(50% - 0.75rem)',
                     minWidth: 0
                 };
 
@@ -206,6 +206,7 @@
                             display: 'flex',
                             flexDirection: 'row',
                             flexWrap: 'nowrap',
+                            columnGap: '1.5rem',
                             alignItems: getVerticalAlignStyle(attributes.verticalAlign)
                         }
                     },
@@ -218,7 +219,13 @@
                         el('div', {
                             className: `media-text-content col-12 col-md-6 order-2 ${textOrderClass}`,
                             onKeyDown: stopTextDeleteFromRemovingBlock,
-                            style: Object.assign({}, editorColumnStyle, { height:'100%', order: textOrder })
+                            style: Object.assign({}, editorColumnStyle, {
+                                backgroundColor: '#fff',
+                                height:'100%',
+                                order: textOrder,
+                                position: 'relative',
+                                zIndex: 2
+                            })
                         },
                             el(RichText, {
                                 tagName: 'p',
