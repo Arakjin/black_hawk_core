@@ -26,7 +26,16 @@
     }
 
     function stopTextDeleteFromRemovingBlock(event) {
-        if (event.key === 'Backspace' || event.key === 'Delete') {
+        var target = event.target;
+        var isEditingText = target && (
+            target.isContentEditable ||
+            (target.closest && target.closest('[contenteditable="true"], textarea, input'))
+        );
+
+        if (isEditingText && (event.key === 'Backspace' || event.key === 'Delete')) {
+            if (event.nativeEvent && event.nativeEvent.stopImmediatePropagation) {
+                event.nativeEvent.stopImmediatePropagation();
+            }
             event.stopPropagation();
         }
     }
@@ -177,7 +186,11 @@
                         el('div', { className: `wp-block-my-plugin-media-text__media old-photo-shadow col-12 col-md-6 order-1 ${mediaOrderClass}` },
                             el('img', { src: attributes.imageURL, alt: attributes.alt, className: imageClasses, style: imageStyles })
                         ),
-                        el('div', { className: `media-text-content col-12 col-md-6 order-2 ${textOrderClass}`, style: { height:'100%' } },
+                        el('div', {
+                            className: `media-text-content col-12 col-md-6 order-2 ${textOrderClass}`,
+                            onKeyDown: stopTextDeleteFromRemovingBlock,
+                            style: { height:'100%' }
+                        },
                             el(RichText, {
                                 tagName: 'p',
                                 className: 'wp-block-my-plugin-media-text__text',
@@ -185,6 +198,7 @@
                                 onChange: function(newText) {
                                     setAttributes({ text: newText });
                                 },
+                                onKeyDownCapture: stopTextDeleteFromRemovingBlock,
                                 onKeyDown: stopTextDeleteFromRemovingBlock,
                                 placeholder: 'Enter your text here...',
                                 preservePlaceholderOnFocus: true,
