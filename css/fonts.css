@@ -1,27 +1,6 @@
-@font-face {
-  font-family: 'Amstrong';
-  src: url('../assets/fonts/aMSTRONG.otf') format('opentype'),
-       url('../assets/fonts/aMSTRONG.woff') format('woff'),
-       url('../assets/fonts/aMSTRONG.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Garet';
-  src: url('../assets/fonts/Garet-Book.otf') format('opentype'),
-       url('../assets/fonts/Garet-Book.woff') format('woff'),
-       url('../assets/fonts/Garet-Book.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Garet Heavy';
-  src: url('../assets/fonts/Garet-Heavy.otf') format('opentype'),
-       url('../assets/fonts/Garet-Heavy.woff') format('woff'),
-       url('../assets/fonts/Garet-Heavy.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Orbitron Bold';
-  src: url('../assets/fonts/Orbitron-Bold.otf') format('opentype'),
+@font-face {
+  font-family: 'Orbitron Bold';
+  src: url('../assets/fonts/Orbitron-Bold.otf') format('opentype'),
        url('../assets/fonts/Orbitron-Bold.woff') format('woff'),
        url('../assets/fonts/Orbitron-Bold.woff2') format('woff2');
 }
@@ -48,33 +27,15 @@
        url('../assets/fonts/AlumniSans-Bold.woff2') format('woff2');
 }
 
-@font-face {
-  font-family: 'Alumni Sans';
-  src: url('../assets/fonts/AlumniSans-Regular.otf') format('opentype'),
-       url('../assets/fonts/AlumniSans-Regular.woff') format('woff'),
-       url('../assets/fonts/AlumniSans-Regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Captain Howdy';
-  src: url('../assets/fonts/CAPTH___.otf') format('opentype'),
-       url('../assets/fonts/CAPTH___.woff') format('woff'),
-       url('../assets/fonts/CAPTH___.woff2') format('woff2');
-}
-.font_amstrong {
-  font-family: 'Amstrong';
-}
-
-.font_garet {
-  font-family: 'Garet';
-}
-
-.font_garet_heavy {
-  font-family: 'Garet Heavy';
-}
-
-.font_orbitron_bold {
-  font-family: 'Orbitron Bold';
+@font-face {
+  font-family: 'Alumni Sans';
+  src: url('../assets/fonts/AlumniSans-Regular.otf') format('opentype'),
+       url('../assets/fonts/AlumniSans-Regular.woff') format('woff'),
+       url('../assets/fonts/AlumniSans-Regular.woff2') format('woff2');
+}
+
+.font_orbitron_bold {
+  font-family: 'Orbitron Bold';
 }
 
 .font_orbitron {
@@ -89,15 +50,11 @@
   font-family: 'Alumni Sans'; 
 }
 
-.font_alumnisans_bold {
-  font-family: 'Alumni Sans Bold'; 
-}
-
-.font_captain_howdy {
-  font-family: 'Captain Howdy'; 
-}
-/* General body text font */
-body, p, .normal-text, .article-content, .blog-post, .custom-paragraph {
+.font_alumnisans_bold {
+  font-family: 'Alumni Sans Bold'; 
+}
+/* General body text font */
+body, p, .normal-text, .article-content, .blog-post, .custom-paragraph {
     font-family: var(--body-font-family, Arial, sans-serif);
 }
 

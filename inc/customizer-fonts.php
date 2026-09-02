@@ -8,16 +8,12 @@ $black_hawk_font_choices = array(
     'Verdana, sans-serif' => 'Verdana',
     'Tahoma, sans-serif' => 'Tahoma',
     'Courier New, monospace' => 'Courier New',
-    'Garet, sans-serif' => 'Garet',
-    'Garet Heavy, sans-serif' => 'Garet Heavy',
-    'Amstrong, sans-serif' => 'Amstrong',
-    'Orbitron, sans-serif' => 'Orbitron',
-    'Orbitron Bold, sans-serif' => 'Orbitron Bold',
-    'Bert Sans, sans-serif' => 'Bert Sans',
-    'Alumni Sans Bold, sans-serif' => 'Alumni Sans Bold',
-    'Alumni Sans, sans-serif' => 'Alumni Sans',
-    'Captain Howdy, sans-serif' => 'Captain Howdy'
-);
+    'Orbitron, sans-serif' => 'Orbitron',
+    'Orbitron Bold, sans-serif' => 'Orbitron Bold',
+    'Bert Sans, sans-serif' => 'Bert Sans',
+    'Alumni Sans Bold, sans-serif' => 'Alumni Sans Bold',
+    'Alumni Sans, sans-serif' => 'Alumni Sans'
+);
 
 // Helper function to add font controls
 function black_hawk_solutions_add_font_control($wp_customize, $id, $label, $default, $choices, $section = 'black_hawk_solutions_font_options') {
