@@ -195,6 +195,16 @@
                     maxWidth: 'calc(50% - 0.75rem)',
                     minWidth: 0
                 };
+                var editorTextStyle = Object.assign({}, editorColumnStyle, {
+                    backgroundColor: '#fff',
+                    boxSizing: 'border-box',
+                    height:'100%',
+                    order: textOrder,
+                    paddingLeft: attributes.layoutOrientation === 'image-left' ? '0.75rem' : 0,
+                    paddingRight: attributes.layoutOrientation === 'image-right' ? '0.75rem' : 0,
+                    position: 'relative',
+                    zIndex: 2
+                });
 
                 blockContent = el('div', useBlockProps({ 
                     className: `wp-block-my-plugin-media-text ${attributes.layoutOrientation}`
@@ -219,13 +229,7 @@
                         el('div', {
                             className: `media-text-content col-12 col-md-6 order-2 ${textOrderClass}`,
                             onKeyDown: stopTextDeleteFromRemovingBlock,
-                            style: Object.assign({}, editorColumnStyle, {
-                                backgroundColor: '#fff',
-                                height:'100%',
-                                order: textOrder,
-                                position: 'relative',
-                                zIndex: 2
-                            })
+                            style: editorTextStyle
                         },
                             el(RichText, {
                                 tagName: 'p',

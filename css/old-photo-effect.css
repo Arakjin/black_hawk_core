@@ -114,6 +114,7 @@
 
 .editor-styles-wrapper .wp-block-my-plugin-media-text .media-text-content {
   background-color: #fff;
+  box-sizing: border-box;
   z-index: 2;
 }
 
@@ -124,6 +125,8 @@
 
 .editor-styles-wrapper .wp-block-my-plugin-media-text.image-left .media-text-content {
   order: 2 !important;
+  padding-left: 0.75rem;
+  padding-right: 0;
 }
 
 .editor-styles-wrapper .wp-block-my-plugin-media-text.image-right .wp-block-my-plugin-media-text__media,
@@ -133,6 +136,8 @@
 
 .editor-styles-wrapper .wp-block-my-plugin-media-text.image-right .media-text-content {
   order: 1 !important;
+  padding-left: 0;
+  padding-right: 0.75rem;
 }
   
   .old-photo {
