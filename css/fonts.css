@@ -1,7 +1,36 @@
 @font-face {
+  font-family: 'Garet';
+  src: url('../assets/fonts/Garet-Book.otf') format('opentype'),
+       url('../assets/fonts/Garet-Book.woff') format('woff'),
+       url('../assets/fonts/Garet-Book.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Garet Heavy';
+  src: url('../assets/fonts/Garet-Heavy.otf') format('opentype'),
+       url('../assets/fonts/Garet-Heavy.woff') format('woff'),
+       url('../assets/fonts/Garet-Heavy.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'New Rocker';
+  src: url('../assets/fonts/NewRocker-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Pirata One';
+  src: url('../assets/fonts/PirataOne-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'UnifrakturCook';
+  src: url('../assets/fonts/UnifrakturCook-Bold.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'Orbitron Bold';
   src: url('../assets/fonts/Orbitron-Bold.otf') format('opentype'),
-       url('../assets/fonts/Orbitron-Bold.woff') format('woff'),
+       url('../assets/fonts/Orbitron-Bold.woff') format('woff'),
        url('../assets/fonts/Orbitron-Bold.woff2') format('woff2');
 }
 
@@ -36,11 +65,31 @@
 
 .font_orbitron_bold {
   font-family: 'Orbitron Bold';
-}
-
-.font_orbitron {
-  font-family: 'Orbitron'; 
-}
+}
+
+.font_garet {
+  font-family: 'Garet';
+}
+
+.font_garet_heavy {
+  font-family: 'Garet Heavy';
+}
+
+.font_new_rocker {
+  font-family: 'New Rocker';
+}
+
+.font_pirata_one {
+  font-family: 'Pirata One';
+}
+
+.font_unifrakturcook {
+  font-family: 'UnifrakturCook';
+}
+
+.font_orbitron {
+  font-family: 'Orbitron'; 
+}
 
 .font_bert_sans {
   font-family: 'Bert Sans'; 
