@@ -408,7 +408,8 @@ section {
   --bs-navbar-active-color: rgba(var(--bs-navbar-emphasis-color-rgb), 1) !important;
   --bs-navbar-brand-color: rgba(var(--bs-navbar-emphasis-color-rgb), 1) !important;
   --bs-navbar-brand-hover-color: rgba(var(--bs-navbar-emphasis-color-rgb), 1) !important;
-  --bs-navbar-toggler-border-color: rgba(var(--bs-navbar-emphasis-color-rgb), 0.15) !important;
+  --bs-navbar-toggler-border-color: rgba(var(--bs-navbar-emphasis-color-rgb), 1) !important;
+  --bs-navbar-toggler-icon-bg: var(--bs-navbar-toggler-icon-bg-custom) !important;
 }
 .navbar-shrink {
   background: var(--bs-navbar-shrink-bg-rgb) !important;
@@ -420,7 +421,8 @@ section {
   --bs-navbar-active-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 1) !important;
   --bs-navbar-brand-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 1) !important;
   --bs-navbar-brand-hover-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 1) !important;
-  --bs-navbar-toggler-border-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 0.15) !important;
+  --bs-navbar-toggler-border-color: rgba(var(--bs-navbar-shrink-emphasis-color-rgb), 1) !important;
+  --bs-navbar-toggler-icon-bg: var(--bs-navbar-shrink-toggler-icon-bg-custom) !important;
 }
 /* Custom Latest Posts Block Styles */
 .hide-post-titles .wp-block-latest-posts__post-title {

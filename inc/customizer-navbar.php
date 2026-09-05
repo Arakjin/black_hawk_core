@@ -136,15 +136,75 @@ function black_hawk_solutions_customize_navbar($wp_customize)
         'sanitize_callback' => 'sanitize_hex_color', // Sanitize HEX input
         'transport'         => 'refresh',
     ));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'navbar_shrink_text_color_control', array(
-        'label'       => __('Navbar Shrink Text Color', 'black_hawk_solutions_theme'),
-        'section'     => 'black_hawk_solutions_navbar_options',
-        'settings'    => 'navbar_shrink_text_color',
-    )));
-
-    // Color navbar logo settings
-    $wp_customize->add_setting('color_navbar_logo', array(
-        'default'           => true, // Default to fixed navbar
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'navbar_shrink_text_color_control', array(
+        'label'       => __('Navbar Shrink Text Color', 'black_hawk_solutions_theme'),
+        'section'     => 'black_hawk_solutions_navbar_options',
+        'settings'    => 'navbar_shrink_text_color',
+    )));
+
+    // Navbar Toggler Icon Color Setting
+    $wp_customize->add_setting('navbar_toggler_icon_color', array(
+        'default'           => '#ffffff',
+        'sanitize_callback' => 'sanitize_hex_color',
+        'transport'         => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'navbar_toggler_icon_color_control', array(
+        'label'       => __('Navbar Toggler Icon Color', 'black_hawk_solutions_theme'),
+        'section'     => 'black_hawk_solutions_navbar_options',
+        'settings'    => 'navbar_toggler_icon_color',
+    )));
+
+    // Navbar Toggler Icon Opacity Setting
+    $wp_customize->add_setting('navbar_toggler_icon_opacity', array(
+        'default'           => 1,
+        'sanitize_callback' => 'black_hawk_solutions_sanitize_opacity',
+        'transport'         => 'refresh',
+    ));
+    $wp_customize->add_control('navbar_toggler_icon_opacity_control', array(
+        'label'       => __('Navbar Toggler Icon Opacity', 'black_hawk_solutions_theme'),
+        'section'     => 'black_hawk_solutions_navbar_options',
+        'settings'    => 'navbar_toggler_icon_opacity',
+        'type'        => 'number',
+        'input_attrs' => array(
+            'min'  => 0,
+            'max'  => 1,
+            'step' => 0.1,
+        ),
+    ));
+
+    // Navbar Shrink Toggler Icon Color Setting
+    $wp_customize->add_setting('navbar_shrink_toggler_icon_color', array(
+        'default'           => '#ffffff',
+        'sanitize_callback' => 'sanitize_hex_color',
+        'transport'         => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'navbar_shrink_toggler_icon_color_control', array(
+        'label'       => __('Navbar Shrink Toggler Icon Color', 'black_hawk_solutions_theme'),
+        'section'     => 'black_hawk_solutions_navbar_options',
+        'settings'    => 'navbar_shrink_toggler_icon_color',
+    )));
+
+    // Navbar Shrink Toggler Icon Opacity Setting
+    $wp_customize->add_setting('navbar_shrink_toggler_icon_opacity', array(
+        'default'           => 1,
+        'sanitize_callback' => 'black_hawk_solutions_sanitize_opacity',
+        'transport'         => 'refresh',
+    ));
+    $wp_customize->add_control('navbar_shrink_toggler_icon_opacity_control', array(
+        'label'       => __('Navbar Shrink Toggler Icon Opacity', 'black_hawk_solutions_theme'),
+        'section'     => 'black_hawk_solutions_navbar_options',
+        'settings'    => 'navbar_shrink_toggler_icon_opacity',
+        'type'        => 'number',
+        'input_attrs' => array(
+            'min'  => 0,
+            'max'  => 1,
+            'step' => 0.1,
+        ),
+    ));
+
+    // Color navbar logo settings
+    $wp_customize->add_setting('color_navbar_logo', array(
+        'default'           => true, // Default to fixed navbar
         'sanitize_callback' => 'wp_validate_boolean',
         'transport'         => 'refresh',
     ));

@@ -1,9 +1,23 @@
 
 <?php
-use BlackHawkSolutions\hex_to_rgb;
-use BlackHawkSolutions\generate_css_filter;
-?>
-<style>
+use BlackHawkSolutions\hex_to_rgb;
+use BlackHawkSolutions\generate_css_filter;
+
+$navbar_toggler_icon_data_url = static function ($color, $opacity) {
+    $rgb = \BlackHawkSolutions\hex_to_rgb($color);
+    $opacity = is_numeric($opacity) ? max(0, min(1, (float) $opacity)) : 1;
+
+    if (!$rgb) {
+        $rgb = array(255, 255, 255);
+    }
+
+    $stroke = sprintf('rgba(%d, %d, %d, %s)', $rgb[0], $rgb[1], $rgb[2], $opacity);
+    $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="' . $stroke . '" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg>';
+
+    return 'data:image/svg+xml,' . rawurlencode($svg);
+};
+?>
+<style>
     :root {
         --header-height: <?php echo esc_attr(get_theme_mod('header_height', '750px')); ?>;
         --hero-logo-size: <?php echo esc_attr(get_theme_mod('masthead_logo_size', '10em')); ?>;
@@ -27,13 +41,21 @@ use BlackHawkSolutions\generate_css_filter;
             $rgb = \BlackHawkSolutions\hex_to_rgb(get_theme_mod('navbar_text_color', '#ffffff'));
             echo esc_attr($rgb ? implode(', ', $rgb) : '255, 255, 255'); 
         ?>;
-        --bs-navbar-shrink-emphasis-color-rgb: <?php 
-            $rgb = \BlackHawkSolutions\hex_to_rgb(get_theme_mod('navbar_shrink_text_color', '#ffffff'));
-            echo esc_attr($rgb ? implode(', ', $rgb) : '255, 255, 255'); 
-        ?>;
-
-        <?php
-        $color_navbar = get_theme_mod('color_navbar_logo', false); // Default to false
+        --bs-navbar-shrink-emphasis-color-rgb: <?php 
+            $rgb = \BlackHawkSolutions\hex_to_rgb(get_theme_mod('navbar_shrink_text_color', '#ffffff'));
+            echo esc_attr($rgb ? implode(', ', $rgb) : '255, 255, 255'); 
+        ?>;
+        --bs-navbar-toggler-icon-bg-custom: url("<?php echo esc_attr($navbar_toggler_icon_data_url(
+            get_theme_mod('navbar_toggler_icon_color', '#ffffff'),
+            get_theme_mod('navbar_toggler_icon_opacity', 1)
+        )); ?>");
+        --bs-navbar-shrink-toggler-icon-bg-custom: url("<?php echo esc_attr($navbar_toggler_icon_data_url(
+            get_theme_mod('navbar_shrink_toggler_icon_color', '#ffffff'),
+            get_theme_mod('navbar_shrink_toggler_icon_opacity', 1)
+        )); ?>");
+
+        <?php
+        $color_navbar = get_theme_mod('color_navbar_logo', false); // Default to false
         if ($color_navbar):
             $navbar_logo_color = get_theme_mod('navbar_logo_color', '#ffffff');
             $navbar_shrink_logo_color = get_theme_mod('navbar_shrink_logo_color', '#ffffff');
